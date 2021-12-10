@@ -31,6 +31,8 @@ class CategoryController extends Controller
     {
         $categories = $this->categories->withCriteria([
             new LatestFirst(),
+            new IsLive(),
+            //new ByUser(auth()->id()), // commented because need auth package installed
         ])->all();
         
         return view('categories.index', compact('categories'));
