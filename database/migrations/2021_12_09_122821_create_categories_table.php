@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->boolean('live')->default(true);
             $table->timestamps();
         });
     }

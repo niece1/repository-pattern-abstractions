@@ -21,6 +21,7 @@ class CategoryFactory extends Factory
             },
             'title' => $title = $this->faker->unique()->word,
             'slug' => Str::slug($title),
+            'live' => $this->faker->boolean ? true : false,
         ];
     }
 }

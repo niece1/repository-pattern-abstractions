@@ -8,5 +8,5 @@ namespace App\Repositories\Contracts;
  */
 interface CategoryRepository
 {
-    public function all();
+    public function allLive();
 }

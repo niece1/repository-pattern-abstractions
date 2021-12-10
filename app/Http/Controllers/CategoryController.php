@@ -29,8 +29,10 @@ class CategoryController extends Controller
     
     public function index()
     {
-        $categories = $this->categories->all();
-        dd($categories);
-        //return view('categories.index', compact('categories'));
+        $categories = $this->categories->withCriteria([
+            new LatestFirst(),
+        ])->all();
+        
+        return view('categories.index', compact('categories'));
     }
 }

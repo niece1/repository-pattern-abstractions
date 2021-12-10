@@ -17,4 +17,9 @@ class EloquentCategoryRepository extends RepositoryAbstract implements CategoryR
     {
         return Category::class;
     }
+    
+    public function allLive()
+    {
+        return $this->entity->where('live', true)->get();
+    }
 }
