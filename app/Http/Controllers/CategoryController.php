@@ -33,6 +33,7 @@ class CategoryController extends Controller
             new LatestFirst(),
             new IsLive(),
             //new ByUser(auth()->id()), // commented because need auth package installed
+            new EagerLoad(['posts', 'posts.user'])
         ])->all();
         
         return view('categories.index', compact('categories'));
