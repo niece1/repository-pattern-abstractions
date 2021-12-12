@@ -6,13 +6,13 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\Contracts\{
     CategoryRepository,
     UserRepository,
-    AddressRepository
+    ProfileRepository
 };
 
 use App\Repositories\Eloquent\{
     EloquentCategoryRepository,
     EloquentUserRepository,
-    EloquentAddressRepository
+    EloquentProfileRepository
 };
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -36,5 +36,6 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(CategoryRepository::class, EloquentCategoryRepository::class);
         $this->app->bind(UserRepository::class, EloquentUserRepository::class);
+        $this->app->bind(ProfileRepository::class, EloquentProfileRepository::class);
     }
 }

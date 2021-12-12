@@ -29,6 +29,14 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     public function find($id)
     {
         $model = $this->entity->find($id);
+
+        if (!$model) {
+            throw (new ModelNotFoundException)->setModel(
+                get_class($this->entity->getModel()), $id
+            );
+        }
+
+        return $model;
     }
     //without get return Builder
     public function findWhere($column, $value)
@@ -39,6 +47,14 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     public function findWhereFirst($column, $value)
     {
         $model = $this->entity->where($column, $value)->first();
+
+        if (!$model) {
+            throw (new ModelNotFoundException)->setModel(
+                get_class($this->entity->getModel())
+            );
+        }
+
+        return $model;
     }
     
     public function paginate($perPage = 10)

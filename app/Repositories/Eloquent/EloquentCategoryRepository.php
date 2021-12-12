@@ -22,4 +22,9 @@ class EloquentCategoryRepository extends RepositoryAbstract implements CategoryR
     {
         return $this->entity->where('live', true)->get();
     }
+    
+    public function findBySlug($slug)
+    {
+        return $this->findWhereFirst('slug', $slug);
+    }
 }

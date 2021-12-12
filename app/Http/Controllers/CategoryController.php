@@ -38,4 +38,11 @@ class CategoryController extends Controller
         
         return view('categories.index', compact('categories'));
     }
+    
+    public function show($slug)
+    {
+        $category = $this->categories->withCriteria(new IsLive(), new EagerLoad(['posts.user']))->findBySlug($slug);
+
+        return view('categories.show', compact('category'));
+    }
 }

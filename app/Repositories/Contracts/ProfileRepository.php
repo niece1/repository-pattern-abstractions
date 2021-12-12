@@ -6,7 +6,7 @@ namespace App\Repositories\Contracts;
  *
  * @author test
  */
-interface CategoryRepository
+interface ProfileRepository
 {
-    public function findBySlug($slug);
+    
 }
