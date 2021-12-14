@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Repositories\Contracts\RepositoryInterface;
 use App\Repositories\Exceptions\NoEntityDefined;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Repositories\Criteria\CriteriaInterface;
 use Illuminate\Support\Arr;
 
@@ -23,12 +24,12 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     
     public function all()
     {
-        return $this->entity->get();
+        return $this->entity->get(); //get is Eloquent method
     }
     
     public function find($id)
     {
-        $model = $this->entity->find($id);
+        $model = $this->entity->find($id); //find is Eloquent method
 
         if (!$model) {
             throw (new ModelNotFoundException)->setModel(
@@ -41,7 +42,7 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     //without get return Builder
     public function findWhere($column, $value)
     {
-        return $this->entity->where($column, $value)->get();
+        return $this->entity->where($column, $value)->get(); //get is Eloquent method to return Laravel's Collection
     }
     
     public function findWhereFirst($column, $value)
@@ -88,7 +89,7 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     
     public function withCriteria(...$criteria)
     {
-        $criteria = Arr::flatten($criteria);
+        $criteria = Arr::flatten($criteria); // we need flatten criteria to get this parameter as not a multidim. array
 
         foreach ($criteria as $criterion) {
             $this->entity = $criterion->apply($this->entity);

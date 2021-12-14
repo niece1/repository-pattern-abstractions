@@ -8,5 +8,6 @@ namespace App\Repositories\Contracts;
  */
 interface UserRepository
 {
-    public function all();
+    public function createProfile($userId, array $properties);
+    public function deleteProfile($userId, $profileId);
 }

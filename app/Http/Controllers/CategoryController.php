@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Repositories\Contracts\{
     CategoryRepository,
     UserRepository
@@ -18,13 +16,11 @@ use App\Repositories\Eloquent\Criteria\{
 class CategoryController extends Controller
 {
     protected $categories;
+
     
-    protected $users;
-    
-    public function __construct(CategoryRepository $categories, UserRepository $users)
+    public function __construct(CategoryRepository $categories)
     {
         $this->categories = $categories;
-        $this->users = $users;
     }
     
     public function index()
@@ -32,9 +28,11 @@ class CategoryController extends Controller
         $categories = $this->categories->withCriteria([
             new LatestFirst(),
             new IsLive(),
-            //new ByUser(auth()->id()), // commented because need auth package installed
+            //new ByUser(auth()->id()), // commented because need auth package installed, example shows using parameters with criteria
             new EagerLoad(['posts', 'posts.user'])
         ])->all();
+
+        //$categories->load(['posts', 'posts.user']); // a simpler way to eager load w/o EagerLoad criteria
         
         return view('categories.index', compact('categories'));
     }

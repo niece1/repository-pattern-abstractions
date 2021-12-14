@@ -15,12 +15,8 @@ class EloquentCategoryRepository extends RepositoryAbstract implements CategoryR
 {
     public function entity()
     {
+        //you can return a string 'Category' or make it like below
         return Category::class;
-    }
-    
-    public function allLive()
-    {
-        return $this->entity->where('live', true)->get();
     }
     
     public function findBySlug($slug)

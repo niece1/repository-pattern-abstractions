@@ -13,7 +13,7 @@ class IsLive implements CriterionInterface
 {
     public function apply($entity)
     {
-        //called from trait HasLive
+        //called from HasLive trait
         return $entity->live();
     }
 }

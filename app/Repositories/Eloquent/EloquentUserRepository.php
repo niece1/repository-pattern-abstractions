@@ -18,4 +18,15 @@ class EloquentUserRepository extends RepositoryAbstract implements UserRepositor
     {
         return User::class;
     }
+    
+    public function createProfile($userId, array $properties)
+    {
+        return $this->find($userId)->addresses()->create($properties);
+    }
+
+    public function deleteProfile($userId, $profileId)
+    {
+        //DELETE FROM profiles WHERE user_id=1 and profile_id=2
+        return $this->find($userId)->profiles()->findOrFail($profileId)->delete();
+    }
 }

@@ -13,7 +13,7 @@ class ByUser implements CriterionInterface
 {
     protected $userId;
 
-    public function __construct($userId)
+    public function __construct($userId) // we use constructor to pass parameters like auth()->id()
     {
         $this->userId = $userId;
     }

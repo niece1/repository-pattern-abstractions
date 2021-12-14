@@ -13,7 +13,7 @@ class LatestFirst implements CriterionInterface
 {
     public function apply($entity)
     {
-        //latest is a default scope on Laravels builder
+        //latest() is a default scope on Laravels builder
         return $entity->latest();
     }
 }
