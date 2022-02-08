@@ -10,18 +10,18 @@ class Category extends Model
 {
     use HasFactory;
     use HasLive;
-    
+
     protected $fillable = [
         'title',
         'slug',
         'user_id',
     ];
-    
+
     public function getRouteKeyName()
     {
         return 'slug';
     }
-    
+
     public function posts()
     {
         return $this->hasMany(Post::class);

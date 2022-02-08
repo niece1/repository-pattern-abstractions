@@ -8,7 +8,6 @@ use App\Repositories\Contracts\{
     UserRepository,
     ProfileRepository
 };
-
 use App\Repositories\Eloquent\{
     EloquentCategoryRepository,
     EloquentUserRepository,

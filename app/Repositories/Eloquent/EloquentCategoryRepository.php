@@ -18,7 +18,7 @@ class EloquentCategoryRepository extends RepositoryAbstract implements CategoryR
         //you can return a string 'Category' or make it like below
         return Category::class;
     }
-    
+
     public function findBySlug($slug)
     {
         return $this->findWhereFirst('slug', $slug);

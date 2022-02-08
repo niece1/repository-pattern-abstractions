@@ -18,7 +18,7 @@ class EloquentUserRepository extends RepositoryAbstract implements UserRepositor
     {
         return User::class;
     }
-    
+
     public function createProfile($userId, array $properties)
     {
         return $this->find($userId)->addresses()->create($properties);
