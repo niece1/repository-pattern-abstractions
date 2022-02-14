@@ -2,12 +2,12 @@
 
 namespace App\Repositories\Criteria;
 
-/**
- *
- * @author test
- */
 interface CriteriaInterface
 {
-    // one can pass just array instead of ...
+    /*
+     * Add criteria to the query. One can pass just array instead of spread operator.
+     *
+     * @param $criteria
+     */
     public function withCriteria(...$criteria);
 }

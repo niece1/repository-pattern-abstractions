@@ -4,16 +4,15 @@ namespace App\Repositories\Eloquent\Criteria;
 
 use App\Repositories\Criteria\CriterionInterface;
 
-/**
- * Description of LatestFirst
- *
- * @author test
- */
 class LatestFirst implements CriterionInterface
 {
+    /*
+     * Utilize entity, latest() is a default scope on Laravels builder.
+     *
+     * @param $entity
+     */
     public function apply($entity)
     {
-        //latest() is a default scope on Laravels builder
         return $entity->latest();
     }
 }

@@ -16,7 +16,7 @@ use App\Repositories\Eloquent\Criteria\{
 class CategoryController extends Controller
 {
     /**
-     * CategoryRepository instance.
+     * Category repository instance.
      *
      * @var type object
      */
@@ -33,6 +33,11 @@ class CategoryController extends Controller
         $this->categories = $categories;
     }
 
+    /**
+     * Display all categories.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $categories = $this->categories->withCriteria([
@@ -48,6 +53,12 @@ class CategoryController extends Controller
         return view('categories.index', compact('categories'));
     }
 
+    /*
+     * Display the specified category.
+     *
+     * @param \App\Models\Category $slug
+     * @return \Illuminate\Http\Response
+     */
     public function show($slug)
     {
         $category = $this->categories->withCriteria(new IsLive(), new EagerLoad(['posts.user']))->findBySlug($slug);

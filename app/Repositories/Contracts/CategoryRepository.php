@@ -2,11 +2,6 @@
 
 namespace App\Repositories\Contracts;
 
-/**
- * Category repository interface.
- *
- * @author Volodymyr Zhonchuk
- */
 interface CategoryRepository
 {
     /**

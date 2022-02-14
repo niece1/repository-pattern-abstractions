@@ -2,11 +2,12 @@
 
 namespace App\Repositories\Criteria;
 
-/**
- *
- * @author test
- */
 interface CriterionInterface
 {
+    /*
+     * Utilize entity.
+     *
+     * @param $entity
+     */
     public function apply($entity);
 }
